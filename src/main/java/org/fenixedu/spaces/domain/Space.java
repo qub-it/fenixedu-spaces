@@ -40,7 +40,7 @@ import com.google.common.collect.Lists;
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.Atomic.TxMode;
 
-public final class Space extends Space_Base implements Comparable<Space> {
+public class Space extends Space_Base implements Comparable<Space> {
     public Space() {
         super();
     }
