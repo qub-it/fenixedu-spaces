@@ -30,6 +30,7 @@ public class MetadataSpec {
     private Class<?> type;
     private boolean required;
     private String defaultValue;
+    private boolean inactive;
 
     public MetadataSpec(String name, LocalizedString description, Class<?> type, boolean required, String defaultValue) {
         this.name = name;
@@ -51,6 +52,9 @@ public class MetadataSpec {
         }
         setRequired(obj.get("required").getAsBoolean());
         setDefaultValue(obj.get("defaultValue").getAsString());
+        JsonElement jsonElement = obj.get("inactive");
+        setInactive(jsonElement == null ? false : jsonElement.getAsBoolean());
+
     }
 
     public String getName() {
@@ -89,6 +93,14 @@ public class MetadataSpec {
         return defaultValue;
     }
 
+    public boolean isInactive() {
+        return inactive;
+    }
+
+    public void setInactive(boolean inactive) {
+        this.inactive = inactive;
+    }
+
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
     }
@@ -100,6 +112,7 @@ public class MetadataSpec {
         json.addProperty("required", isRequired());
         json.addProperty("defaultValue", getDefaultValue());
         json.addProperty("type", getType().getName());
+        json.addProperty("inactive", isInactive());
         return json;
     }
 }
