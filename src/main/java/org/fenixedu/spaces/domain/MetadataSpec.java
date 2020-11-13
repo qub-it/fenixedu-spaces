@@ -31,6 +31,7 @@ public class MetadataSpec {
     private boolean required;
     private String defaultValue;
     private boolean inactive;
+    private boolean inherited;
 
     public MetadataSpec(String name, LocalizedString description, Class<?> type, boolean required, String defaultValue) {
         this.name = name;
@@ -52,8 +53,10 @@ public class MetadataSpec {
         }
         setRequired(obj.get("required").getAsBoolean());
         setDefaultValue(obj.get("defaultValue").getAsString());
-        JsonElement jsonElement = obj.get("inactive");
-        setInactive(jsonElement == null ? false : jsonElement.getAsBoolean());
+        JsonElement inactiveJsonElement = obj.get("inactive");
+        setInactive(inactiveJsonElement == null ? false : inactiveJsonElement.getAsBoolean());
+        JsonElement inheritedJsonElement = obj.get("inherited");
+        setInherited(inheritedJsonElement == null ? false : inheritedJsonElement.getAsBoolean());
 
     }
 
@@ -105,6 +108,14 @@ public class MetadataSpec {
         this.defaultValue = defaultValue;
     }
 
+    public void setInherited(boolean inherited) {
+        this.inherited = inherited;
+    }
+
+    public boolean isInherited() {
+        return inherited;
+    }
+
     public JsonElement toJson() {
         JsonObject json = new JsonObject();
         json.addProperty("name", getName());
@@ -113,6 +124,7 @@ public class MetadataSpec {
         json.addProperty("defaultValue", getDefaultValue());
         json.addProperty("type", getType().getName());
         json.addProperty("inactive", isInactive());
+        json.addProperty("inherited", isInherited());
         return json;
     }
 }
