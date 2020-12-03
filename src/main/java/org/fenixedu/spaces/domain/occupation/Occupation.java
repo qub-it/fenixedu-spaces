@@ -19,13 +19,13 @@
 package org.fenixedu.spaces.domain.occupation;
 
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.fenixedu.bennu.FenixEduSpaceConfiguration;
 import org.fenixedu.bennu.core.domain.Bennu;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.i18n.BundleUtil;
 import org.fenixedu.bennu.core.security.Authenticate;
 import org.fenixedu.bennu.core.util.CoreConfiguration;
 import org.fenixedu.spaces.domain.Space;
@@ -147,7 +147,7 @@ public class Occupation extends Occupation_Base {
     }
 
     public String getType() {
-        return ResourceBundle.getBundle(FenixEduSpaceConfiguration.BUNDLE).getString("Generic");
+        return BundleUtil.getString(FenixEduSpaceConfiguration.BUNDLE, "Generic");
     }
 
 }
