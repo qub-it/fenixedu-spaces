@@ -44,7 +44,7 @@ import com.google.gson.JsonParser;
 
 public class SpaceClassification extends SpaceClassification_Base {
 
-    private static final Comparator<SpaceClassification> ABSOLUTE_CODE_COMPARATOR = new Comparator<SpaceClassification>() {
+    public static final Comparator<SpaceClassification> ABSOLUTE_CODE_COMPARATOR = new Comparator<SpaceClassification>() {
 
         private int compareIntString(String o1, String o2) {
             try {
