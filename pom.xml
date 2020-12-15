@@ -9,7 +9,7 @@
         <relativePath />
     </parent>
 
-    <groupId>com.qubit.solution.fenixedu</groupId>
+    <groupId>org.fenixedu</groupId>
     <artifactId>fenixedu-spaces</artifactId>
     <version>3.1.0-FORK</version>
     <packaging>jar</packaging>
