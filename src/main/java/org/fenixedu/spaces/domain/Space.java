@@ -18,7 +18,9 @@
  */
 package org.fenixedu.spaces.domain;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -41,6 +43,13 @@ import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.Atomic.TxMode;
 
 public class Space extends Space_Base implements Comparable<Space> {
+
+    public static final Comparator<Space> NORMALIZED_SPACE_NAMES_COMPARATOR = (space1, space2) -> {
+        String name1 = Normalizer.normalize(space1.getName(), Normalizer.Form.NFD).toLowerCase();
+        String name2 = Normalizer.normalize(space2.getName(), Normalizer.Form.NFD).toLowerCase();
+        return name1.compareTo(name2);
+    };
+
     public Space() {
         super();
     }
