@@ -1,2 +1,4 @@
+- Bug fix: Fixed inactive metadataspecs being evaluated during space update
+
 4.0.0-FORK (04-01-2021)
 - Forked

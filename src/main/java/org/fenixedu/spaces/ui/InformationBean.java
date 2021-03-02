@@ -222,12 +222,14 @@ public class InformationBean {
         JsonObject json = new JsonObject();
         if (classification != null) {
             for (MetadataSpec spec : classification.getMetadataSpecs()) {
-                final String name = spec.getName();
-                if (metadata.containsKey(name)) {
-                    json.add(name, convert(spec.getType(), getValue(name)));
-                } else {
-                    if (spec.isRequired()) {
-                        json.add(name, convert(spec.getType(), spec.getDefaultValue()));
+                if (!spec.isInactive()) {
+                    final String name = spec.getName();
+                    if (metadata.containsKey(name)) {
+                        json.add(name, convert(spec.getType(), getValue(name)));
+                    } else {
+                        if (spec.isRequired()) {
+                            json.add(name, convert(spec.getType(), spec.getDefaultValue()));
+                        }
                     }
                 }
             }
