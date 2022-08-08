@@ -34,7 +34,7 @@ import org.fenixedu.spaces.domain.occupation.requests.OccupationRequest;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
-public class Occupation extends Occupation_Base {
+public class Occupation extends Occupation_Base implements SpaceOccupation {
 
     public Occupation() {
         super();
