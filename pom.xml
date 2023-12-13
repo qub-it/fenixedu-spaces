@@ -18,9 +18,19 @@
     <url>http://fenixedu.org</url>
     <inceptionYear>2014</inceptionYear>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.qubit.solution.fenixedu</groupId>
+                <artifactId>fenixedu-oss-dependency-management</artifactId>
+                <version>1</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <properties>
-        <version.org.fenixedu.bennu>6.0.0</version.org.fenixedu.bennu>
-        <version.org.fenixedu.fenixedu-commons>3.0.0</version.org.fenixedu.fenixedu-commons>
         <version.com.google.guava.guava>27.0-jre</version.com.google.guava.guava>
         <version.com.google.code.gson.gson>2.2.4</version.com.google.code.gson.gson>
         <version.joda.time.joda.time>2.3</version.joda.time.joda.time>
@@ -77,32 +87,26 @@
         <dependency>
             <groupId>org.fenixedu</groupId>
             <artifactId>bennu-core</artifactId>
-            <version>${version.org.fenixedu.bennu}</version>
         </dependency>
         <dependency>
             <groupId>org.fenixedu</groupId>
             <artifactId>bennu-scheduler</artifactId>
-            <version>${version.org.fenixedu.bennu}</version>
         </dependency>
         <dependency>
             <groupId>org.fenixedu</groupId>
             <artifactId>bennu-portal</artifactId>
-            <version>${version.org.fenixedu.bennu}</version>
         </dependency>
         <dependency>
             <groupId>org.fenixedu</groupId>
             <artifactId>bennu-io</artifactId>
-            <version>${version.org.fenixedu.bennu}</version>
         </dependency>
         <dependency>
             <groupId>org.fenixedu</groupId>
             <artifactId>bennu-spring</artifactId>
-            <version>${version.org.fenixedu.bennu}</version>
         </dependency>
         <dependency>
             <groupId>org.fenixedu</groupId>
             <artifactId>fenixedu-commons</artifactId>
-            <version>${version.org.fenixedu.fenixedu-commons}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -136,28 +140,4 @@
             <version>${version.com.iver.cit.fmap}</version>
         </dependency>
     </dependencies>
-
-
-       <distributionManagement>
-                <repository>
-                        <id>qubIT-oss</id>
-                        <url>https://repository-oss.omnis.cloud/nexus/repository/releases/</url>
-                </repository>
-                <snapshotRepository>
-                        <id>qubIT-oss</id>
-                        <url>https://repository-oss.omnis.cloud/nexus/repository/snapshots/</url>
-                </snapshotRepository>
-     </distributionManagement>
-
-    <repositories>
-        <repository>
-	     <id>qubIT-oss</id>
-             <url>https://repository-oss.omnis.cloud/nexus/repository/releases/</url>
-        </repository>
-        <repository>
-            <id>fenixedu-maven-repository</id>
-            <url>https://repo.fenixedu.org/fenixedu-maven-repository</url>
-        </repository>
-    </repositories>
-
 </project>
