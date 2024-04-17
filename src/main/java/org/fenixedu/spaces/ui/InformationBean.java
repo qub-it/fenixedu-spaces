@@ -32,8 +32,8 @@ import org.fenixedu.spaces.domain.MetadataSpec;
 import org.fenixedu.spaces.domain.SpaceClassification;
 import org.fenixedu.spaces.domain.submission.SpacePhoto;
 import org.joda.time.DateTime;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
+//import org.springframework.format.annotation.DateTimeFormat;
+//import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -49,17 +49,17 @@ public class InformationBean {
     private BigDecimal area;
     private String name;
     private String identification;
-    @DateTimeFormat(pattern = DATE_FORMAT)
+//    @DateTimeFormat(pattern = DATE_FORMAT)
     private DateTime validFrom;
-    @DateTimeFormat(pattern = DATE_FORMAT)
+//    @DateTimeFormat(pattern = DATE_FORMAT)
     private DateTime validUntil;
     private SpaceClassification classification;
     private Map<String, String> metadata;
     private String externalId;
     private BlueprintFile blueprint;
-    private MultipartFile blueprintMultipartFile;
+//    private MultipartFile blueprintMultipartFile;
     private Set<SpacePhoto> spacePhotoSet;
-    private MultipartFile spacePhotoMultipartFile;
+//    private MultipartFile spacePhotoMultipartFile;
     private User user;
 
     private static Gson gson = new Gson();
@@ -242,13 +242,13 @@ public class InformationBean {
         return value == null ? null : value.toString();
     }
 
-    public MultipartFile getBlueprintMultipartFile() {
-        return blueprintMultipartFile;
-    }
-
-    public void setBlueprintMultipartFile(MultipartFile blueprintMultipartFile) {
-        this.blueprintMultipartFile = blueprintMultipartFile;
-    }
+//    public MultipartFile getBlueprintMultipartFile() {
+//        return blueprintMultipartFile;
+//    }
+//
+//    public void setBlueprintMultipartFile(MultipartFile blueprintMultipartFile) {
+//        this.blueprintMultipartFile = blueprintMultipartFile;
+//    }
 
     public void setBlueprint(BlueprintFile file) {
         this.blueprint = file;
@@ -259,23 +259,24 @@ public class InformationBean {
     }
 
     public byte[] getBlueprintContent() {
-        try {
-            if (getBlueprintMultipartFile() != null && !getBlueprintMultipartFile().isEmpty()) {
-                return getBlueprintMultipartFile().getBytes();
-            }
-            return null;
-        } catch (IOException e) {
-            return null;
-        }
+//        try {
+//            if (getBlueprintMultipartFile() != null && !getBlueprintMultipartFile().isEmpty()) {
+//                return getBlueprintMultipartFile().getBytes();
+//            }
+//            return null;
+//        } catch (IOException e) {
+//            return null;
+//        }
+        return null;
     }
 
-    public MultipartFile getSpacePhotoMultipartFile() {
-        return spacePhotoMultipartFile;
-    }
-
-    public void setSpacePhotoMultipartFile(MultipartFile spacePhotoMultipartFile) {
-        this.spacePhotoMultipartFile = spacePhotoMultipartFile;
-    }
+//    public MultipartFile getSpacePhotoMultipartFile() {
+//        return spacePhotoMultipartFile;
+//    }
+//
+//    public void setSpacePhotoMultipartFile(MultipartFile spacePhotoMultipartFile) {
+//        this.spacePhotoMultipartFile = spacePhotoMultipartFile;
+//    }
 
     public void setSpacePhotoSet(Set<SpacePhoto> files) {
         this.spacePhotoSet = files;
@@ -286,14 +287,15 @@ public class InformationBean {
     }
 
     public byte[] getSpacePhotoContent() {
-        try {
-            if (getSpacePhotoMultipartFile() != null && !getSpacePhotoMultipartFile().isEmpty()) {
-                return getSpacePhotoMultipartFile().getBytes();
-            }
-            return null;
-        } catch (IOException e) {
-            return null;
-        }
+//        try {
+//            if (getSpacePhotoMultipartFile() != null && !getSpacePhotoMultipartFile().isEmpty()) {
+//                return getSpacePhotoMultipartFile().getBytes();
+//            }
+//            return null;
+//        } catch (IOException e) {
+//            return null;
+//        }
+        return null;
     }
 
 }
