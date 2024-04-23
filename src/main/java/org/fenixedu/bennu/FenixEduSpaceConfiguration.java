@@ -18,12 +18,10 @@
  */
 package org.fenixedu.bennu;
 
-import org.fenixedu.bennu.spring.BennuSpringModule;
 import org.fenixedu.commons.configuration.ConfigurationInvocationHandler;
 import org.fenixedu.commons.configuration.ConfigurationManager;
 import org.fenixedu.commons.configuration.ConfigurationProperty;
 
-@BennuSpringModule(basePackages = "org.fenixedu.spaces.ui", bundles = "SpacesResources")
 public class FenixEduSpaceConfiguration {
 
     @ConfigurationManager(description = "Fenix Space Configuration")
