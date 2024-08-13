@@ -31,7 +31,7 @@
     </dependencyManagement>
 
     <properties>
-        <version.com.google.guava.guava>27.0-jre</version.com.google.guava.guava>
+        <version.com.google.guava.guava>33.2.1-jre</version.com.google.guava.guava>
         <version.com.google.code.gson.gson>2.2.4</version.com.google.code.gson.gson>
         <version.joda.time.joda.time>2.3</version.joda.time.joda.time>
         <version.javax.ws.rs.javax.ws.rs.api>2.0</version.javax.ws.rs.javax.ws.rs.api>
