@@ -18,10 +18,14 @@
  */
 package org.fenixedu.spaces.domain.occupation;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
+import org.apache.commons.lang3.StringUtils;
 import org.fenixedu.bennu.FenixEduSpaceConfiguration;
 import org.fenixedu.bennu.core.domain.Bennu;
 import org.fenixedu.bennu.core.domain.User;
@@ -33,6 +37,8 @@ import org.fenixedu.spaces.domain.occupation.config.OccupationConfig;
 import org.fenixedu.spaces.domain.occupation.requests.OccupationRequest;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
+import org.joda.time.base.AbstractDateTime;
+import org.joda.time.base.AbstractInterval;
 
 public class Occupation extends Occupation_Base implements SpaceOccupation {
 
@@ -55,6 +61,14 @@ public class Occupation extends Occupation_Base implements SpaceOccupation {
     }
 
     @Override
+    public void setConfig(OccupationConfig config) {
+        super.setConfig(config);
+        if (config != null) {
+            updateYearsIndex();
+        }
+    }
+
+    @Override
     public void addSpace(Space space) {
         super.addSpace(space);
     }
@@ -73,6 +87,10 @@ public class Occupation extends Occupation_Base implements SpaceOccupation {
     }
 
     public Boolean overlaps(List<Interval> intervals) {
+        if (!matchesYearsIndex(intervals)) {
+            return false;
+        }
+
         for (final Interval interval : intervals) {
             for (final Interval occupationInterval : getIntervals()) {
                 if (occupationInterval.overlaps(interval)) {
@@ -84,6 +102,10 @@ public class Occupation extends Occupation_Base implements SpaceOccupation {
     }
 
     public boolean overlaps(Interval... intervals) {
+        if (!matchesYearsIndex(Arrays.asList(intervals))) {
+            return false;
+        }
+
         for (final Interval interval : intervals) {
             for (final Interval occupationInterval : getIntervals()) {
                 if (occupationInterval.overlaps(interval)) {
@@ -92,6 +114,28 @@ public class Occupation extends Occupation_Base implements SpaceOccupation {
             }
         }
         return false;
+    }
+
+    boolean matchesYearsIndex(List<Interval> intervals) {
+        return StringUtils.isBlank(getYearsIndex()) || extractYears(intervals).anyMatch(year -> getYearsIndex().contains(year));
+    }
+
+    static Stream<String> extractYears(List<Interval> intervals) {
+        if (intervals.isEmpty()) {
+            return Stream.empty();
+        }
+
+        final Integer minYear =
+                intervals.stream().map(AbstractInterval::getStart).map(AbstractDateTime::getYear).min(Integer::compareTo)
+                        .orElseThrow();
+        final Integer maxYear =
+                intervals.stream().map(AbstractInterval::getEnd).map(AbstractDateTime::getYear).max(Integer::compareTo)
+                        .orElseThrow();
+        return IntStream.rangeClosed(minYear, maxYear).mapToObj(Integer::toString);
+    }
+
+    public void updateYearsIndex() {
+        setYearsIndex(extractYears(getIntervals()).sorted().collect(Collectors.joining(" ")));
     }
 
     public Boolean isActive() {

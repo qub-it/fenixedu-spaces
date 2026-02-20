@@ -24,6 +24,7 @@ class occupation.Occupation {
 	String emails;
 	String subject;
 	String description;
+	String yearsIndex;
 }
 
 class Information {
