@@ -91,8 +91,9 @@ public class Occupation extends Occupation_Base implements SpaceOccupation {
             return false;
         }
 
+        final List<Interval> occupationIntervals = getIntervals();
         for (final Interval interval : intervals) {
-            for (final Interval occupationInterval : getIntervals()) {
+            for (final Interval occupationInterval : occupationIntervals) {
                 if (occupationInterval.overlaps(interval)) {
                     return true;
                 }
@@ -106,8 +107,9 @@ public class Occupation extends Occupation_Base implements SpaceOccupation {
             return false;
         }
 
+        final List<Interval> occupationIntervals = getIntervals();
         for (final Interval interval : intervals) {
-            for (final Interval occupationInterval : getIntervals()) {
+            for (final Interval occupationInterval : occupationIntervals) {
                 if (occupationInterval.overlaps(interval)) {
                     return true;
                 }

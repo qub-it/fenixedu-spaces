@@ -1,3 +1,5 @@
+- Refactor: Avoid multiple calculations of occupation intervals on overlaps method [#UL-ISEG-9028]
+
 5.4.0-FORK (20-02-2026)
 - Improvement: Index space occupations by year to improve performance [#ISCTE-FENIXEDU-1422]
 
