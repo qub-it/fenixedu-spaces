@@ -91,8 +91,9 @@ public class Occupation extends Occupation_Base implements SpaceOccupation {
             return false;
         }
 
-        final List<Interval> occupationIntervals = getIntervals();
-        for (final Interval interval : intervals) {
+        final List<Interval> occupationIntervals = getIntervals().stream().map(Occupation::truncateToMinutes).toList();
+        final List<Interval> intervalsToCheck = intervals.stream().map(Occupation::truncateToMinutes).toList();
+        for (final Interval interval : intervalsToCheck) {
             for (final Interval occupationInterval : occupationIntervals) {
                 if (occupationInterval.overlaps(interval)) {
                     return true;
@@ -107,8 +108,9 @@ public class Occupation extends Occupation_Base implements SpaceOccupation {
             return false;
         }
 
-        final List<Interval> occupationIntervals = getIntervals();
-        for (final Interval interval : intervals) {
+        final List<Interval> occupationIntervals = getIntervals().stream().map(Occupation::truncateToMinutes).toList();
+        final List<Interval> intervalsToCheck = Stream.of(intervals).map(Occupation::truncateToMinutes).toList();
+        for (final Interval interval : intervalsToCheck) {
             for (final Interval occupationInterval : occupationIntervals) {
                 if (occupationInterval.overlaps(interval)) {
                     return true;
@@ -116,6 +118,12 @@ public class Occupation extends Occupation_Base implements SpaceOccupation {
             }
         }
         return false;
+    }
+
+    private static Interval truncateToMinutes(Interval interval) {
+        final DateTime start = interval.getStart().withSecondOfMinute(0).withMillisOfSecond(0);
+        final DateTime end = interval.getEnd().withSecondOfMinute(0).withMillisOfSecond(0);
+        return new Interval(start, end);
     }
 
     boolean matchesYearsIndex(List<Interval> intervals) {

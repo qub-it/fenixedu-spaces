@@ -1,3 +1,5 @@
+- Improvement: Ignore seconds when checking occupation overlaps [#UL-FC-5971]
+
 5.4.1-FORK (24-03-2026)
 - Refactor: Avoid multiple calculations of occupation intervals on overlaps method [#UL-ISEG-9028]
 

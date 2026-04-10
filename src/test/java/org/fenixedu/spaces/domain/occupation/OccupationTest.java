@@ -113,4 +113,20 @@ public class OccupationTest {
         Assert.assertFalse(occupation.overlaps(nonOverlappingTimeInterval));
         Assert.assertFalse(occupation.overlaps(nonOverlappingYearInterval));
     }
+
+    @Test
+    public void testOverlaps_ignoreSeconds() {
+        DateTime start = new DateTime(2023, 1, 1, 10, 0);
+        DateTime end = new DateTime(2023, 1, 1, 12, 0, 30);
+        Interval occupationInterval = new Interval(start, end);
+        ExplicitConfig config = new ExplicitConfig(null, Collections.singletonList(occupationInterval));
+
+        Occupation occupation = new Occupation(null, "Subject", "Description", config);
+
+        Interval overlappingIntervalSameMinute = new Interval(new DateTime(2023, 1, 1, 12, 0), new DateTime(2023, 1, 1, 13, 0));
+        Assert.assertFalse(occupation.overlaps(overlappingIntervalSameMinute));
+
+        Interval overlappingIntervalNextMinute = new Interval(new DateTime(2023, 1, 1, 12, 1), new DateTime(2023, 1, 1, 13, 0));
+        Assert.assertFalse(occupation.overlaps(overlappingIntervalNextMinute));
+    }
 }
