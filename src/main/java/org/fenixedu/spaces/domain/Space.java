@@ -107,7 +107,8 @@ public class Space extends Space_Base implements Comparable<Space> {
     }
 
     public boolean isActive() {
-        return getInformation().isPresent() && getBennu() != null;
+        return getBennu() != null && getInformation().map(
+                info -> info.getValidUntil() == null || info.getValidUntil().isAfterNow()).orElse(false);
     }
 
     public <T extends Object> Optional<T> getMetadata(String field) {
@@ -150,6 +151,9 @@ public class Space extends Space_Base implements Comparable<Space> {
                 return Optional.of(current);
             }
             current = current.getPrevious();
+        }
+        if (getCurrent() != null) {
+            return Optional.of(getCurrent());
         }
         return Optional.empty();
     }
@@ -440,6 +444,9 @@ public class Space extends Space_Base implements Comparable<Space> {
 
     public String getPresentationName() {
         final List<Space> path = Lists.reverse(getPath());
+        if (path.isEmpty()) {
+            return getName();
+        }
         String others = path.subList(1, path.size()).stream().map(Space::getName).collect(Collectors.joining(", "));
         return String.format(Strings.isNullOrEmpty(others) ? "%s" : "%s (%s)", path.get(0).getName(), others);
     }
