@@ -107,8 +107,7 @@ public class Space extends Space_Base implements Comparable<Space> {
     }
 
     public boolean isActive() {
-        return getBennu() != null && getInformation().map(
-                info -> info.getValidUntil() == null || info.getValidUntil().isAfterNow()).orElse(false);
+        return getBennu() != null && getInformation().map(info -> info.contains(DateTime.now())).orElse(false);
     }
 
     public <T extends Object> Optional<T> getMetadata(String field) {
@@ -152,10 +151,7 @@ public class Space extends Space_Base implements Comparable<Space> {
             }
             current = current.getPrevious();
         }
-        if (getCurrent() != null) {
-            return Optional.of(getCurrent());
-        }
-        return Optional.empty();
+        return Optional.ofNullable(getCurrent());
     }
 
     private Boolean dateEquals(DateTime validFrom, DateTime validUntil) {
