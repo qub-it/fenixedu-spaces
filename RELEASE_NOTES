@@ -1,3 +1,5 @@
+- Refactor: Removes SpacesBootstrapper [#qubIT-Fenix-8343]
+
 5.4.3-FORK (18-05-2026)
 - Improvement: Consider validUntil date when evaluating space activeness [#UL-ICS-1653]
 
