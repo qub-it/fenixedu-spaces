@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Vector;
 
-import javax.servlet.UnavailableException;
+import jakarta.servlet.UnavailableException;
 
 import org.fenixedu.spaces.domain.BlueprintFile;
 import org.fenixedu.spaces.domain.BlueprintFile.BlueprintTextRectangle;

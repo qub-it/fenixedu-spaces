@@ -27,7 +27,7 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.fenixedu.bennu.FenixEduSpaceConfiguration;
 import org.fenixedu.bennu.core.domain.Bennu;
