@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.fenixedu.bennu.FenixEduSpaceConfiguration;
 import org.fenixedu.bennu.core.domain.Bennu;

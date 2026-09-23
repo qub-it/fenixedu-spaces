@@ -34,7 +34,7 @@
         <version.com.google.guava.guava>33.2.1-jre</version.com.google.guava.guava>
         <version.com.google.code.gson.gson>2.2.4</version.com.google.code.gson.gson>
         <version.joda.time.joda.time>2.3</version.joda.time.joda.time>
-        <version.javax.ws.rs.javax.ws.rs.api>2.0</version.javax.ws.rs.javax.ws.rs.api>
+        <version.jakarta.ws.rs.jakarta.ws.rs.api>3.1.0</version.jakarta.ws.rs.jakarta.ws.rs.api>
         <version.com.iver.cit.jdwglib>1.0.1</version.com.iver.cit.jdwglib>
         <version.com.iver.cit.fmap>0.5</version.com.iver.cit.fmap>
     </properties>
@@ -120,9 +120,9 @@
             <version>${version.joda.time.joda.time}</version>
         </dependency>
         <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>${version.javax.ws.rs.javax.ws.rs.api}</version>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>${version.jakarta.ws.rs.jakarta.ws.rs.api}</version>
         </dependency>
         <dependency>
             <groupId>com.iver.cit</groupId>
