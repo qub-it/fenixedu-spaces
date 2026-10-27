@@ -63,4 +63,9 @@ public class OccupationStateInstant extends OccupationStateInstant_Base {
         super.setInstant(instant);
     }
 
+    public void delete() {
+        super.setRequest(null);
+        super.setRootDomainObject(null);
+        super.deleteDomainObject();
+    }
 }

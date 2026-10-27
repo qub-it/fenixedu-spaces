@@ -306,4 +306,17 @@ public class OccupationRequest extends OccupationRequest_Base {
         }
     }
 
+    public void delete() {
+        if (!getOccupationSet().isEmpty()) {
+            throw new SpaceDomainException("error.OccupationRequest.delete.cannotDelete.hasOccupations");
+        }
+
+        super.setCampus(null);
+        super.setOwner(null);
+        super.setRequestor(null);
+        super.getCommentSet().forEach(OccupationComment::delete);
+        super.getStateInstantsSet().forEach(OccupationStateInstant::delete);
+        super.setRootDomainObject(null);
+        super.deleteDomainObject();
+    }
 }

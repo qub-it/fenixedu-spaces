@@ -123,4 +123,10 @@ public class OccupationComment extends OccupationComment_Base {
         }
     }
 
+    public void delete() {
+        super.setOwner(null);
+        super.setRequest(null);
+        super.setRootDomainObject(null);
+        super.deleteDomainObject();
+    }
 }
